@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scherzo</title>
+    <style>
+        body {
+            background-color: white; /* Sfondo bianco */
+            color: black; /* Testo nero */
+            font-size: 5vw; /* Dimensione del testo responsive */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Nasconde la barra di scorrimento */
+        }
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 0, 0, 0.9); /* Sfondo rosso semi-trasparente */
+            color: white; /* Testo bianco */
+            padding: 5% 10%; /* Padding responsive */
+            border-radius: 15px;
+            z-index: 1000;
+            display: none; /* Nasconde il popup inizialmente */
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+            width: 80%; /* Larghezza massima del popup */
+            max-width: 400px; /* Larghezza massima per schermi più grandi */
+        }
+        .close-btn {
+            background-color: white;
+            color: red;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1.2em;
+            margin-top: 20px;
+            width: 100%; /* Pulsante a tutta larghezza */
+        }
+    </style>
+</head>
+<body>
+    <div id="error-text">ERROR</div>
+    <div class="popup" id="popup">
+        <p>Il tuo dispositivo ora è da buttare.</p>
+        <button class="close-btn" onclick="closePopup()">LESGOSKY</button>
+    </div>
+
+    <script>
+        let popupCount = 0; // Contatore dei popup
+
+        function showPopup() {
+            if (popupCount < 10) { // Mostra fino a 10 popup
+                const popup = document.getElementById('popup');
+                popup.style.display = 'block'; // Mostra il popup
+            }
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'none'; // Nasconde il popup
+            popupCount++; // Incrementa il contatore dei popup
+            showPopup(); // Mostra il successivo
+        }
+
+        // Mostra il primo popup dopo che la pagina è caricata
+        window.onload = showPopup;
+    </script>
+</body>
+</html>
